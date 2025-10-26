@@ -101,33 +101,36 @@ def verificar_extrato(lista_contas_cadastradas : list):
                     print(f'Saque de {valor}')
                 else:
                     print('transação não reconhecida') #Em caso de NONE
-                
-usuarios_cadastrados = [{'id': 1, 'user': 'joao', 'cpf': '14496245450', 'idade': 21, 'endereco': 'PE'}]
-contas_cadastradas = [{'cpf': '14496245450', 'password': '123', 'usuario': 'joao', 'agencia': '0001', 'id': 1, 'saldo': 600.0, 'limite': 750,'extrato':[200,400,-700,700]}]
 
-while True:
+def main():
+    usuarios_cadastrados = [{'id': 1, 'user': 'joao', 'cpf': '14496245450', 'idade': 21, 'endereco': 'PE'}]
+    contas_cadastradas = [{'cpf': '14496245450', 'password': '123', 'usuario': 'joao', 'agencia': '0001', 'id': 1, 'saldo': 600.0, 'limite': 750,'extrato':[200,400,-700,700]}]
 
-    opcao = input(menu())
+    while True:
 
-    if opcao == '1':
-        usuarios_cadastrados.append(cadastro_cliente(usuarios_cadastrados))
+        opcao = input(menu())
 
-    elif opcao == '2':
-        contas_cadastradas.append(cadastrar_conta(usuarios_cadastrados))
-        print(contas_cadastradas)
+        if opcao == '1':
+            usuarios_cadastrados.append(cadastro_cliente(usuarios_cadastrados))
 
-    elif opcao == '3':
-        print(depositar(contas_cadastradas))
-    
-    elif opcao == '4':
-        print(sacar(contas_cadastradas))
-    
-    elif opcao == '5':
-        verificar_extrato(contas_cadastradas)
-    
-    elif opcao == '6':
-        print('Saindo...')
-        break
+        elif opcao == '2':
+            contas_cadastradas.append(cadastrar_conta(usuarios_cadastrados))
+            print(contas_cadastradas)
 
-    else:
-        print('Por favor escolha um numero entre 1 e 6')
+        elif opcao == '3':
+            print(depositar(contas_cadastradas))
+        
+        elif opcao == '4':
+            print(sacar(contas_cadastradas))
+        
+        elif opcao == '5':
+            verificar_extrato(contas_cadastradas)
+        
+        elif opcao == '6':
+            print('Saindo...')
+            break
+
+        else:
+            print('Por favor escolha um numero entre 1 e 6')
+
+main()
