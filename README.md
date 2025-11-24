@@ -18,48 +18,52 @@ O programa exibe um menu com as seguintes opções:
 ---
 
 ### 2. Cadastro de Cliente
-Função: `cadastro_cliente(lista_users_cadastrados)`
-- Solicita nome, CPF, data de nascimento e endereço.
+Classe: `Cliente`
+- Armazena nome, CPF, data de nascimento, idade e endereço.
 - Verifica se o CPF já está cadastrado.
-- Calcula a idade com base no ano de nascimento.
-- Retorna um dicionário com os dados do cliente.
+- Os objetos `Cliente` são adicionados a uma lista de clientes cadastrados.
 
 ---
 
 ### 3. Cadastro de Conta Bancária
-Função: `cadastrar_conta(lista_users_cadastrados)`
-- Solicita o CPF do cliente.
-- Verifica se o CPF está cadastrado.
-- Cria uma conta com senha, número de conta, agência, saldo inicial, limite e extrato.
+Classe: `Conta` (abstrata) e subclasses como `ContaCorrente`
+- Associada a um cliente existente.
+- Possui atributos como número da conta, agência, saldo, limite e histórico.
+- Cada conta é representada por um objeto e adicionada à lista de contas cadastradas.
 
 ---
 
 ### 4. Depósito
-Função: `depositar(lista_contas_cadastradas)`
+Método: `depositar(valor)`
 - Solicita CPF e senha para autenticação.
 - Permite inserir um valor de depósito.
-- Atualiza o saldo e registra o valor no extrato.
+- Atualiza o saldo e registra a transação como objeto `Deposito` no histórico da conta.
 
 ---
 
 ### 5. Saque
-Função: `sacar(lista_contas_cadastradas)`
+Método: `sacar(valor)`
 - Solicita CPF e senha para autenticação.
 - Permite inserir um valor de saque.
 - Verifica se há saldo suficiente.
-- Atualiza o saldo e registra o saque no extrato.
+- Atualiza o saldo e registra a transação como objeto `Saque` no histórico da conta.
 
 ---
 
 ### 6. Verificar Extrato
-Função: `verificar_extrato(lista_contas_cadastradas)`
+Método: `extrato()`
 - Solicita CPF e senha para autenticação.
-- Exibe o histórico de transações (depósitos e saques).
+- Exibe o histórico de transações (depósitos e saques) armazenados como objetos na lista de histórico da conta.
 
 ---
 
 ## 🧠 Observações Técnicas
 
-- Os dados são armazenados em listas de dicionários em tempo de execução.
+- Os dados são armazenados em **objetos de classes** (`Cliente`, `Conta`, `Historico`, `Transacao`).
+- Esses objetos são mantidos em listas (`clientes`, `contas`) durante a execução.
 - Não há persistência em banco de dados ou arquivos.
-- O CPF é usado como identificador único para clientes e
+- O CPF continua sendo usado como identificador único para clientes e contas.
+
+        self.endereco = endereco
+        self.contas = []
+
